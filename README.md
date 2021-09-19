@@ -2,5 +2,6 @@
 
 Hello and Welcome!
 
-This is an ongoing project of writeups for various TryHackMe.com labs. 
+This is an ongoing project of my solutions for various TryHackMe.com labs. 
 
+-Simon
