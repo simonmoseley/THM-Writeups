@@ -1,21 +1,21 @@
-Try-Hack-Me Pickle Rick
+### Try-Hack-Me Pickle Rick
 
 This lab is an easy rated, CTF style lab, that is based on the television show Rick and Morty.
 In this Rick and Morty themed lab, users are challenged to exploit a web server to find 3 ingredients that will help Rick make a potion that will transform him from pickle to human.
 
 First after starting the machine I run Nmap to see what ports are open and saving the results to a file called initial_scan.
 
-<p alight="center">
+<p align="center">
  <img src="https://github.com/simonmoseley/THM-Writeups/blob/faf861cc0be30aa1568278e5753343d6cb922455/pickleRick/screenShots/nmap1.png">
 </p>
 
 With only two open ports, 22 and 80, I use the -A flag in Nmap on those two ports to get additional information about the ports and victim machine.
 
-<p alight="center">
+<p align="center">
  <img src="pickleRick/screenShots/nmap2.png">
 </p>
 
-<p alight="center">
+<p align="center">
  <img src="pickleRick/screenShots/nmap3.png">
 </p>
 
