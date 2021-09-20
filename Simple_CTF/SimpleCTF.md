@@ -70,7 +70,7 @@ Since there's a CMS here, there must be a login portal somewhere that could be a
 ![browser3](https://user-images.githubusercontent.com/90977933/134069408-3341c6bc-4c6f-4c0d-b6e0-6f15a557fb7f.png)
 
 
-After trying a few times at the login portal. I decided to try a different route. I stop with the web portion here and go to see what I can find with FTP using the anonymous login. (probably should have explored this way first but...)
+We dont have a username or anything yet so I decided to try a different route. I stop with the web portion here and go to see what I can find with FTP using the anonymous login. (probably should have explored this way first but...)
 After logging I find a directory called pub.
 
 
