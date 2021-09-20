@@ -5,7 +5,7 @@ In this Rick and Morty themed lab, users are challenged to exploit a web server 
 
 First after starting the machine I run Nmap to see what ports are open and saving the results to a file called initial_scan.
 
-{nmap1 photo}
+![nmap1](https://user-images.githubusercontent.com/90977933/133953217-d124f8bc-3925-4df8-beb7-5b187ef3f915.png)
 
 With only two open ports, 22 and 80, I use the -A flag in Nmap on those two ports to get additional information about the ports and victim machine.
 
