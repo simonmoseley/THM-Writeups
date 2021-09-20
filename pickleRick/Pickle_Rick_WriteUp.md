@@ -1,4 +1,4 @@
-# Try Hack Me - [Pickle Rick Room](https://tryhackme.com/room/picklerick)
+# TryHackMe - [Pickle Rick Room](https://tryhackme.com/room/picklerick)
 
 ## Easy rated, CTF style lab, based on the television show Rick and Morty.
 
