@@ -7,3 +7,7 @@
 **This is an ongoing project of my solutions for various TryHackMe.com labs.**
 
 **-Simon**
+
+![Simple_CTF_Writeup](https://github.com/simonmoseley/THM-Writeups/blob/080d9ec03b614ed32b34c9ee6b4bce03fb13f875/Simple_CTF/SimpleCTF.md) 
+
+![Pickle_Rick_Writeup](https://github.com/simonmoseley/THM-Writeups/blob/080d9ec03b614ed32b34c9ee6b4bce03fb13f875/pickleRick/Pickle_Rick_WriteUp.md)
